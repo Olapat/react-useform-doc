@@ -1,39 +1,36 @@
-import React, { memo, createContext, useCallback } from 'react'
+import React, { createContext, useCallback } from 'react'
 import type { UseFormType } from '../../utils/hooks/useForm/useForm'
 import middleware from '../../utils/middleware'
 
 export const FormContext = createContext({})
 
-interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
+interface Props<ValuesType> extends React.FormHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
-  handlerSubmit: Function;
-  form: UseFormType;
+  handlerSubmit:| ((values: ValuesType, next: Function, end: Function) => any) | Function[];
+  form: UseFormType<ValuesType>;
   onSubmitError?: Function;
 }
 
-const Form: React.FC<Props> = (props) => {
+const Form = <ValuesType extends { [key: string]: any } = {}>(props: Props<ValuesType>) => {
   const { children, handlerSubmit, onSubmitError, form, ...formProps } = props
   const { setSubmitting, validate, values, blackList, whiteList, rules } = form
 
-  const onStartSubmit = (next: Function) => {
+  const onStartSubmit = React.useCallback((next: Function) => {
     setSubmitting(true)
     if (typeof next === 'function') {
       next()
     }
-  }
+  }, [setSubmitting])
 
-  const onEndSubmit = () => {
+  const onEndSubmit = React.useCallback(() => {
     setSubmitting(false)
-  }
+  }, [setSubmitting])
 
   const buildValidate = useCallback((next: Function, end: Function) => {
     const resultValid = validate(next, end, true)
-    let isValid = false
     let errors = {}
     if (typeof resultValid === 'boolean') {
-      isValid = resultValid
     } else {
-      isValid = resultValid[0]
       errors = resultValid[1]
     }
     if (typeof onSubmitError === 'function') {
@@ -48,7 +45,7 @@ const Form: React.FC<Props> = (props) => {
     } else if (typeof handlerSubmit === 'function') {
       middleware([onStartSubmit, buildValidate, handlerSubmit, onEndSubmit], { end: onEndSubmit })
     }
-  }, [handlerSubmit, buildValidate])
+  }, [handlerSubmit, buildValidate, onEndSubmit, onStartSubmit])
 
   const isFieldDisable = useCallback((name):boolean => {
     if (blackList === '*') {
@@ -73,4 +70,4 @@ const Form: React.FC<Props> = (props) => {
   )
 }
 
-export default memo(Form)
+export default Form

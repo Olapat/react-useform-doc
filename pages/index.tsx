@@ -1,6 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import ExampleBasic from '../components/ExampleBasic'
+import TableIsAllowed from '../components/TableIsAllowed'
+import TableProps from '../components/TableProps'
+import TableRules from '../components/TableRules'
 
 const Home: NextPage = () => {
   return (
@@ -11,10 +15,24 @@ const Home: NextPage = () => {
       <main>
         <h1>Welcome</h1>
         <p>Document react hook useForm Olapat</p>
-
-        <Link href='/style-guide'>
-          <a>{'style-guide'}</a>
-        </Link>
+        <h3>Example</h3>
+        <section id='exp-basic'>
+          <h4>Basic</h4>
+          <ExampleBasic />
+        </section>
+        <h3>Props</h3>
+        <section id="props">
+          <h4>useForm</h4>
+          <TableProps />
+        </section>
+        <section id="props-rules">
+          <h4>Rule</h4>
+          <TableRules />
+        </section>
+        <section id="props-isallowed">
+          <h4>Rule is Allowed</h4>
+          <TableIsAllowed />
+        </section>
       </main>
     </>
   )
