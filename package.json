@@ -1,18 +1,23 @@
 {
-  "name": "react-useform-doc",
+  "name": "react-useform-doc.github.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3800",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "npm run build && next export",
+    "serve": "npm run export && serve out",
+    "deploy": "npm run export && node gh-pages.js",
+    "de": "gh-pages -d out"
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.4",
     "@mui/material": "^5.0.4",
+    "gh-pages": "^3.2.3",
     "highlight.js": "^11.3.1",
     "next": "11.1.2",
     "prismjs": "^1.25.0",
@@ -25,5 +30,6 @@
     "eslint": "8.1.0",
     "eslint-config-next": "11.1.2",
     "typescript": "4.4.4"
-  }
+  },
+  "homepage": "https://olapat.github.io/react-useform-doc/index.html"
 }
