@@ -1,4 +1,5 @@
 @import url(./theme.css);
+@import url(./prism.css);
 
 html,
 body {
@@ -11,6 +12,10 @@ body {
 body {
   background-color: var(--bg-color);
   color: var(--bg-text-color);
+}
+
+main {
+  padding: 1rem;
 }
 
 h1 {
@@ -47,4 +52,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+pre.prism {
+  background-color: var(--bg-card-color);
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.text-black {
+  color: rgba(0, 0, 0, 0.87);
 }
