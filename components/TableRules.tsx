@@ -18,7 +18,7 @@ function createData(
 
 const rows = [
   createData('required', 'boolean | string', '{}', 'rule set field is required'),
-  createData('isAllowed', <>Object: <a href='#props-isallowed' className='text-black'>IsAllowed</a></>, '{}', 'rule set field is allowed value'),
+  createData('isAllowed', <>Object: <a href='#props-isallowed' className='text-black'>IsAllowed</a></>, 'null', 'rule set field is allowed value'),
 ];
 
 const TableRules: React.FC = props => {

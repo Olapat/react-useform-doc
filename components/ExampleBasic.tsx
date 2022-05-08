@@ -5,8 +5,8 @@ import { Form, useForm } from '../components/form'
 
 const code = (
   `\r
-  import React, { useEffect, useRef } from 'react';
-  import { useForm } from '@olapat/react-useform'
+  import React, { useCallback } from 'react'
+  import { useForm, Form } from '@olapat/react-useform'
 
   const Basic = () => {
     const form = useForm({
@@ -35,6 +35,12 @@ const code = (
         }
       }
     })
+
+    const { values, handlerChange, errors } = form
+
+    const handlerSubmit = useCallback((values) => {
+      console.table(values);
+    }, [])
 
     return (
       <Form form={form} handlerSubmit={handlerSubmit}>

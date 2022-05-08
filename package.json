@@ -10,7 +10,7 @@
     "export": "npm run build && next export",
     "serve": "npm run export && serve out",
     "deploy": "npm run export && node gh-pages.js",
-    "de": "gh-pages -d out"
+    "deploygh": "npm run export && gh-pages -d out"
   },
   "dependencies": {
     "@emotion/react": "^11.5.0",

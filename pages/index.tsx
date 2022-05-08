@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import ExampleBasic from '../components/ExampleBasic'
 import TableIsAllowed from '../components/TableIsAllowed'
 import TableProps from '../components/TableProps'
