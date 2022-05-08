@@ -4,6 +4,7 @@ import ExampleBasic from '../components/ExampleBasic'
 import TableIsAllowed from '../components/TableIsAllowed'
 import TableProps from '../components/TableProps'
 import TableRules from '../components/TableRules'
+import PropertiesUseForm from '../components/PropertiesUseForm'
 
 const Home: NextPage = () => {
   return (
@@ -23,6 +24,10 @@ const Home: NextPage = () => {
         <section id="props">
           <h4>useForm</h4>
           <TableProps />
+        </section>
+        <section id="properties">
+          <h4>Properties UseForm</h4>
+          <PropertiesUseForm />
         </section>
         <section id="props-rules">
           <h4>Rule</h4>
